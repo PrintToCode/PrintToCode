@@ -28,11 +28,12 @@ jobs:
   generate-pacman:
     runs-on: ubuntu-latest
     steps:
-      - uses: huantt/pacman-contribution-graph@v1.0.0
+      - uses: actions/checkout@v3
+      - uses: nomango/pacman-contribution-graph@v1
         with:
-          github-username: PrintToCode
-          ghToken: ${{ secrets.GITHUB_TOKEN }}
-          outputFolder: dist
+          github_username: PrintToCode
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          output_folder: dist
       - uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: pacman-output
