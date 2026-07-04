@@ -11,6 +11,7 @@ permissions:
 jobs:
   generate-snake:
     runs-on: ubuntu-latest
+
     steps:
       - uses: Platane/snk@v3
         with:
@@ -18,6 +19,7 @@ jobs:
           outputs: |
             dist/snake.svg
             dist/snake-dark.svg?palette=github-dark
+
       - uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: snake-output
@@ -27,13 +29,15 @@ jobs:
 
   generate-pacman:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: nomango/pacman-contribution-graph@v1
+      - uses: actions/checkout@v4
+
+      - uses: abozanona/pacman-contribution-graph@main
         with:
           github_username: PrintToCode
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          output_folder: dist
+
       - uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: pacman-output
